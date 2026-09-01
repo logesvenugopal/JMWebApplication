@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management | Men's Wear Hub</title>
+    <link rel="stylesheet" href="employeerepo.css">
+    <!-- FontAwesome for Operational Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>MENS WEAR HUB</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="stock-management.html"><i class="fa-solid fa-shirt"></i> Stock Management</a>
+                <a href="sales-management.html"><i class="fa-solid fa-wallet"></i> Sales Management</a>
+                <a href="#" class="active"><i class="fa-solid fa-users"></i> Employee Management</a>
+                <a href="#"><i class="fa-solid fa-receipt"></i> Pending Bills</a>
+                <a href="#"><i class="fa-solid fa-gears"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Employee Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Action Header -->
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Employee & Staff Registry</h1>
+                    <p>Manage system access levels, assign operations roles, and monitor workforce metrics.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary"><i class="fa-solid fa-clock-rotate-left"></i> Attendance Logs</button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Add New Employee</button>
+                </div>
+            </header>
+
+            <!-- 1. HR Overview Cards (KPI Cards) -->
+            <section class="metrics-grid">
+                <!-- Total Active Staff -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Total Workforce</h3>
+                            <h2>12 Staff Members</h2>
+                            <p class="summary-note">3 Departments assigned</p>
+                        </div>
+                        <i class="fa-solid fa-user-tie card-icon emp-blue"></i>
+                    </div>
+                </div>
+
+                <!-- On Duty Today -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>On Duty Today</h3>
+                            <h2>10 Active</h2>
+                            <p class="trend up"><i class="fa-solid fa-circle-check"></i> 83% Attendance Rate</p>
+                        </div>
+                        <i class="fa-solid fa-clipboard-user card-icon emp-green"></i>
+                    </div>
+                </div>
+
+                <!-- System Admins -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Privileged Access</h3>
+                            <h2>02 Admins</h2>
+                            <p class="summary-note">Restricted root controls</p>
+                        </div>
+                        <i class="fa-solid fa-user-shield card-icon emp-purple"></i>
+                    </div>
+                </div>
+
+                <!-- Open Shift Vacancies -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Pending Invites</h3>
+                            <h2>01 Position</h2>
+                            <p class="trend processing"><i class="fa-solid fa-envelope"></i> Invite link active</p>
+                        </div>
+                        <i class="fa-solid fa-user-tag card-icon emp-orange"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Search and Role Filter Toolbar -->
+            <div class="filter-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search staff name, email, or employee ID...">
+                </div>
+                <div class="select-group">
+                    <select id="filter-role">
+                        <option value="">All Roles</option>
+                        <option value="manager">Store Manager</option>
+                        <option value="inventory">Inventory In-charge</option>
+                        <option value="delivery">Delivery Executive</option>
+                    </select>
+                    <select id="filter-status">
+                        <option value="">All Statuses</option>
+                        <option value="active">Active Now</option>
+                        <option value="offduty">Off Duty</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 3. Employee Master Database Directory -->
+            <div class="data-box">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Staff Information</th>
+                            <th>Assigned Role</th>
+                            <th>Mobile Contact</th>
+                            <th>Access System Tier</th>
+                            <th>System Status</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Staff Member 1 -->
+                        <tr>
+                            <td class="emp-id-text">EMP-2026-001</td>
+                            <td>
+                                <div class="staff-cell">
+                                    <div class="avatar-circle"><i class="fa-solid fa-user"></i></div>
+                                    <div>
+                                        <strong>Ramesh Kumar</strong>
+                                        <span>ramesh@menswearhub.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-tag role-manager">Store Manager</span></td>
+                            <td>+91 99445 12345</td>
+                            <td><strong>Full Write / Edit</strong></td>
+                            <td><span class="status-indicator online-dot">Active Now</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn edit-btn" title="Modify Permissions"><i class="fa-solid fa-user-pen"></i></button>
+                                <button class="action-btn danger-btn" title="Revoke Login Access"><i class="fa-solid fa-user-slash"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Staff Member 2 -->
+                        <tr>
+                            <td class="emp-id-text">EMP-2026-004</td>
+                            <td>
+                                <div class="staff-cell">
+                                    <div class="avatar-circle"><i class="fa-solid fa-user"></i></div>
+                                    <div>
+                                        <strong>Suresh Raina</strong>
+                                        <span>suresh@menswearhub.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-tag role-inventory">Inventory Controller</span></td>
+                            <td>+91 98421 67890</td>
+                            <td><strong>Stock Control Only</strong></td>
+                            <td><span class="status-indicator online-dot">Active Now</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn edit-btn" title="Modify Permissions"><i class="fa-solid fa-user-pen"></i></button>
+                                <button class="action-btn danger-btn" title="Revoke Login Access"><i class="fa-solid fa-user-slash"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Staff Member 3 -->
+                        <tr>
+                            <td class="emp-id-text">EMP-2026-009</td>
+                            <td>
+                                <div class="staff-cell">
+                                    <div class="avatar-circle"><i class="fa-solid fa-user"></i></div>
+                                    <div>
+                                        <strong>Vikram Prabhu</strong>
+                                        <span>vikram@menswearhub.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-tag role-delivery">Delivery Executive</span></td>
+                            <td>+91 97890 54321</td>
+                            <td><strong>Fulfillment Only</strong></td>
+                            <td><span class="status-indicator offline-dot">Off Duty</span></td>
+                            <td class="action-buttons">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Men's Wear Hub</title>
+    <link rel="stylesheet" href="/webapp/src/main/resources/static/css/admin.css">
+    <!-- FontAwesome for Dashboard Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>MENS WEAR HUB</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+               
+                <a href="/Adminstration/StockManagement/stockrepo.css"><i class="fa-solid fa-shirt"></i> Stock Management</a>
+
+                <a href="#"><i class="fa-solid fa-wallet"></i> Sales Management</a>
+                <a href="#"><i class="fa-solid fa-users"></i> Employee Management</a>
+                <a href="#"><i class="fa-solid fa-users"></i> User Management</a>
+                <a href="#"><i class="fa-solid fa-receipt"></i> Pending Bills</a>
+                <a href="#"><i class="fa-solid fa-gears"></i> Settings</a>
+                
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Welcome Back, Admin</h1>
+                    <p>Here is your business overview for today.</p>
+                </div>
+                <div class="admin-profile">
+                    <i class="fa-solid fa-bell notification-icon"></i>
+                    <div class="profile-info">
+                        <strong>Arun Kumar</strong>
+                        <span>Super Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 1. Key Performance Indicators (KPI Cards) -->
+            <section class="metrics-grid">
+                <!-- Sales -->
+                <div class="card card-sales">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Total Sales</h3>
+                            <h2>₹4,52,300</h2>
+                            <p class="trend up"><i class="fa-solid fa-arrow-up"></i> +12.5% this month</p>
+                        </div>
+                        <i class="fa-solid fa-cart-shopping card-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Profit / Loss -->
+                <div class="card card-profit">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Net Profit</h3>
+                            <h2>₹1,85,000</h2>
+                            <p class="trend up"><i class="fa-solid fa-arrow-up"></i> Margin: 41%</p>
+                        </div>
+                        <i class="fa-solid fa-chart-line card-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Expenditures -->
+                <div class="card card-expense">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Expenditures</h3>
+                            <h2>₹95,400</h2>
+                            <p class="trend down"><i class="fa-solid fa-arrow-down"></i> Rent, Utilities, Ads</p>
+                        </div>
+                        <i class="fa-solid fa-money-bill-transfer card-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Investments -->
+                <div class="card card-investment">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Investments</h3>
+                            <h2>₹3,20,000</h2>
+                            <p class="trend"><i class="fa-solid fa-clock"></i> Marketing & New Stock</p>
+                        </div>
+                        <i class="fa-solid fa-piggy-bank card-icon"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Mid Section: Stock, Bills & Employee Highlights -->
+            <div class="content-split-grid">
+                
+                <!-- Stock Management Summary Table -->
+                <div class="data-box">
+                    <div class="box-header">
+                        <h2><i class="fa-solid fa-boxes-stacked"></i> Stock Management</h2>
+                        <a href="#" class="view-all">Manage Stock</a>
+                    </div>
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Product Item</th>
+                                <th>Category</th>
+                                <th>Stock Status</th>
+                                <th>Action Alert</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Slim-fit Black Shirt</td>
+                                <td>Formal Wear</td>
+                                <td><span class="badge success">450 Units</span></td>
+                                <td>Good</td>
+                            </tr>
+                            <tr>
+                                <td>Premium Denim Jeans</td>
+                                <td>Casuals</td>
+                                <td><span class="badge warning">24 Units</span></td>
+                                <td class="text-warning">Restock Soon</td>
+                            </tr>
+                            <tr>
+                                <td>Oversized Graphic T-Shirt</td>
+                                <td>Streetwear</td>
+                                <td><span class="badge danger">05 Units</span></td>
+                                <td class="text-danger">Critical Low</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pending Bills & Outstandings -->
+                <div class="data-box">
+                    <div class="box-header">
+                        <h2><i class="fa-solid fa-file-invoice-dollar"></i> Pending Bills & Dues</h2>
+                        <span class="total-due">Due: ₹64,000</span>
+                    </div>
+                    <ul class="bill-list">
+                        <li class="bill-item">
+                            <div class="bill-info">
+                                <strong>Vandana Fabrics Ltd.</strong>
+                                <span>Material Supply</span>
+                            </div>
+                            <div class="bill-amount text-danger">₹45,000</div>
+                        </li>
+                        <li class="bill-item">
+                            <div class="bill-info">
+                                <strong>BlueDart Logistics</strong>
+                                <span>Shipping Charges</span>
+                            </div>
+                            <div class="bill-amount text-danger">₹12,500</div>
+                        </li>
+                        <li class="bill-item">
+                            <div class="bill-info">
+                                <strong>TNEB Commercial</strong>
+                                <span>Electricity Bill</span>
+                            </div>
+                            <div class="bill-amount text-warning">₹6,500</div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 3. Bottom Section: Employee Overview -->
+            <section class="data-box employee-section">
+                <div class="box-header">
+                    <h2><i class="fa-solid fa-user-tie"></i> Employee Management Summary</h2>
+                    <div class="stats-counter">Active Staffs: <strong>12 Active</strong></div>
+                </div>
+                <div class="employee-grid">
+                    <div class="employee-mini-card">
+                        <div class="emp-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <h4>Ramesh Kumar</h4>
+                            <span>Store Manager</span>
+                        </div>
+                    </div>
+                    <div class="employee-mini-card">
+                        <div class="emp-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <h4>Suresh Raina</h4>
+                            <span>Inventory In-charge</span>
+                        </div>
+                    </div>
+                    <div class="employee-mini-card">
+                        <div class="emp-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <h4>Vikram Prabhu</h4>
+                            <span>Delivery Executive</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

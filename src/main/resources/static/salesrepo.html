@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Management | Men's Wear Hub</title>
+    <link rel="stylesheet" href="salesrepo.css">
+    <!-- FontAwesome for Operational Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>MENS WEAR HUB</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="stock-management.html"><i class="fa-solid fa-shirt"></i> Stock Management</a>
+                <a href="#" class="active"><i class="fa-solid fa-wallet"></i> Sales Management</a>
+                <a href="#"><i class="fa-solid fa-users"></i> Employee Management</a>
+                <a href="#"><i class="fa-solid fa-receipt"></i> Pending Bills</a>
+                <a href="#"><i class="fa-solid fa-gears"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Sales Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Action Header -->
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Sales & Revenue Management</h1>
+                    <p>Track e-commerce checkouts, generate customer tax invoices, and analyze payment flow.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary"><i class="fa-solid fa-file-excel"></i> Export Report</button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-print"></i> Print Sales Log</button>
+                </div>
+            </header>
+
+            <!-- 1. Revenue Ledger Summaries (KPI Cards) -->
+            <section class="metrics-grid">
+                <!-- Gross Revenue -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Gross Revenue</h3>
+                            <h2>₹4,52,300</h2>
+                            <p class="trend up"><i class="fa-solid fa-circle-up"></i> +18.4% target</p>
+                        </div>
+                        <i class="fa-solid fa-money-bill-trend-up card-icon sales-blue"></i>
+                    </div>
+                </div>
+
+                <!-- Online Payment Share -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Gateway (UPI/Card)</h3>
+                            <h2>₹3,84,000</h2>
+                            <p class="trend up"><i class="fa-solid fa-bolt"></i> 85% Digital Share</p>
+                        </div>
+                        <i class="fa-solid fa-credit-card card-icon sales-green"></i>
+                    </div>
+                </div>
+
+                <!-- Cash on Delivery (COD) -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Cash On Delivery</h3>
+                            <h2>₹68,300</h2>
+                            <p class="trend processing"><i class="fa-solid fa-truck"></i> 15% Pending COD</p>
+                        </div>
+                        <i class="fa-solid fa-hand-holding-dollar card-icon sales-orange"></i>
+                    </div>
+                </div>
+
+                <!-- Average Order Value -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Avg Order Value</h3>
+                            <h2>₹2,450</h2>
+                            <p class="trend up"><i class="fa-solid fa-tags"></i> Premium range items</p>
+                        </div>
+                        <i class="fa-solid fa-bag-shopping card-icon sales-purple"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Transaction Toolbar Filters -->
+            <div class="filter-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search Invoice ID, customer phone number...">
+                </div>
+                <div class="select-group">
+                    <select id="filter-payment">
+                        <option value="">All Payment Modes</option>
+                        <option value="upi">Razorpay UPI</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                    <select id="filter-date">
+                        <option value="today">Today</option>
+                        <option value="7days">Last 7 Days</option>
+                        <option value="30days">This Month</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 3. Transaction Database & Order Status Ledger -->
+            <div class="data-box">
+                <table class="sales-table">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Customer Particulars</th>
+                            <th>Order Details</th>
+                            <th>Payment Method</th>
+                            <th>Total Gross</th>
+                            <th>Fulfillment Status</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Transaction 1 -->
+                        <tr>
+                            <td class="invoice-text">#MWH-2026-981</td>
+                            <td>
+                                <div class="customer-cell">
+                                    <strong>Vijay Amritraj</strong>
+                                    <span>+91 98765 43210</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="order-items-list">
+                                    <span>Black Formal Shirt (Size L) x 1</span>
+                                    <span>Premium Blue Jeans (Size 34) x 1</span>
+                                </div>
+                            </td>
+                            <td><span class="pay-method upi-pay"><i class="fa-solid fa-mobile-screen"></i> UPI (Razorpay)</span></td>
+                            <td><strong class="price-text">₹4,200</strong></td>
+                            <td><span class="status-badge paid-badge">Delivered</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn invoice-btn" title="Download Tax Invoice"><i class="fa-solid fa-file-arrow-down"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Transaction 2 -->
+                        <tr>
+                            <td class="invoice-text">#MWH-2026-982</td>
+                            <td>
+                                <div class="customer-cell">
+                                    <strong>Karthik Raja</strong>
+                                    <span>+91 87654 32109</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="order-items-list">
+                                    <span>Oversized Street Tee (Size M) x 2</span>
+                                </div>
+                            </td>
+                            <td><span class="pay-method cod-pay"><i class="fa-solid fa-truck-ramp-box"></i> COD</span></td>
+                            <td><strong class="price-text">₹1,998</strong></td>
+                            <td><span class="status-badge cod-badge">On the Way</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn invoice-btn" title="Download Tax Invoice"><i class="fa-solid fa-file-arrow-down"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Transaction 3 -->
+                        <tr>
+                            <td class="invoice-text">#MWH-2026-983</td>
+                            <td>
+                                <div class="customer-cell">
+                                    <strong>Mohamed Asif</strong>
+                                    <span>+91 76543 21098</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="order-items-list">
+                                    <span>Classic Navy Blazer (Size 42) x 1</span>
+                                </div>
+                            </td>
+                            <td><span class="pay-method card-pay"><i class="fa-solid fa-credit-card"></i> Visa Card</span></td>
+                            <td><strong class="price-text">₹5,499</strong></td>
+                            <td><span class="status-badge paid-badge">Processing</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn invoice-btn" title="Download Tax Invoice"><i class="fa-solid fa-file-arrow-down"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management | Men's Wear Hub</title>
+    <link rel="stylesheet" href="userrepo.css">
+    <!-- FontAwesome for Operational Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>MENS WEAR HUB</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="stock-management.html"><i class="fa-solid fa-shirt"></i> Stock Management</a>
+                <a href="sales-management.html"><i class="fa-solid fa-wallet"></i> Sales Management</a>
+                <a href="employee-management.html"><i class="fa-solid fa-users"></i> Employee Management</a>
+                <a href="#" class="active"><i class="fa-solid fa-user-gear"></i> User Management</a>
+                <a href="#"><i class="fa-solid fa-receipt"></i> Pending Bills</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main User Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Action Header -->
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Customer Profile Database</h1>
+                    <p>Monitor storefront registrations, view delivery locations, and manage registered buyers.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary"><i class="fa-solid fa-file-csv"></i> Export Customers</button>
+                </div>
+            </header>
+
+            <!-- 1. Customer Base Overview (KPI Cards) -->
+            <section class="metrics-grid">
+                <!-- Total Registered Users -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Total Registered</h3>
+                            <h2>1,420 Users</h2>
+                            <p class="summary-note">Organic signs ups</p>
+                        </div>
+                        <i class="fa-solid fa-address-book card-icon usr-blue"></i>
+                    </div>
+                </div>
+
+                <!-- Active Buyers -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Active Buyers</h3>
+                            <h2>845 Buyers</h2>
+                            <p class="trend up"><i class="fa-solid fa-bag-shopping"></i> Ordered in last 30 days</p>
+                        </div>
+                        <i class="fa-solid fa-user-check card-icon usr-green"></i>
+                    </div>
+                </div>
+
+                <!-- New Signups Today -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>New Users Today</h3>
+                            <h2>+18 Users</h2>
+                            <p class="trend up"><i class="fa-solid fa-bolt"></i> Peak time: 6 PM - 9 PM</p>
+                        </div>
+                        <i class="fa-solid fa-user-plus card-icon usr-purple"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Search & Location Filters -->
+            <div class="filter-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search by name, email, phone or pincode...">
+                </div>
+                <div class="select-group">
+                    <select id="filter-status">
+                        <option value="">All Verification</option>
+                        <option value="verified">OTP Verified</option>
+                        <option value="pending">Pending Verification</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 3. Comprehensive Customer Ledger Database -->
+            <div class="data-box">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email Address</th>
+                            <th>Mobile Number</th>
+                            <th>Date of Birth</th>
+                            <th>Shipping Address</th>
+                            <th>Pincode</th>
+                            <th>Password Hash</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Customer Row 1 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="usr-avatar"><i class="fa-solid fa-user"></i></div>
+                                    <strong>Arun Prasath</strong>
+                                </div>
+                            </td>
+                            <td class="email-text">arunprasath@gmail.com</td>
+                            <td>+91 94432 12345</td>
+                            <td>14-05-1998</td>
+                            <td class="address-col">12, Cross Street, Gandhipuram, Coimbatore</td>
+                            <td><span class="pin-tag">641012</span></td>
+                            <td class="password-mask">••••••••<i class="fa-solid fa-eye-slash toggle-pwd" title="Encrypted safely"></i></td>
+                            <td class="action-buttons">
+                                <button class="action-btn view-btn" title="View Order History"><i class="fa-solid fa-clock-rotate-left"></i></button>
+                                <button class="action-btn ban-btn" title="Block User Profile"><i class="fa-solid fa-user-slash"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Customer Row 2 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="usr-avatar"><i class="fa-solid fa-user"></i></div>
+                                    <strong>Naveen Kumar</strong>
+                                </div>
+                            </td>
+                            <td class="email-text">naveen.k@yahoo.com</td>
+                            <td>+91 98456 78901</td>
+                            <td>22-11-1995</td>
+                            <td class="address-col">45A, Anna Nagar 2nd Street, Chennai</td>
+                            <td><span class="pin-tag">600040</span></td>
+                            <td class="password-mask">••••••••<i class="fa-solid fa-eye-slash toggle-pwd"></i></td>
+                            <td class="action-buttons">
+                                <button class="action-btn view-btn" title="View Order History"><i class="fa-solid fa-clock-rotate-left"></i></button>
+                                <button class="action-btn ban-btn" title="Block User Profile"><i class="fa-solid fa-user-slash"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Customer Row 3 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="usr-avatar"><i class="fa-solid fa-user"></i></div>
+                                    <strong>Abdul Rahman</strong>
+                                </div>
+                            </td>
+                            <td class="email-text">abdul99@gmail.com</td>
+                            <td>+91 81234 56789</td>
+                            <td>03-08-2001</td>
+                            <td class="address-col">Old No. 7, Mosque Street, K.K. Nagar, Madurai</td>
+                            <td><span class="pin-tag">625020</span></td>
+                            <td class="password-mask">••••••••<i class="fa-solid fa-eye-slash toggle-pwd"></i></td>
+                            <td class="action-buttons">
+                                <button class="action-btn view-btn" title="View Order History"><i class="fa-solid fa-clock-rotate-left"></i></button>
+                                <button class="action-btn ban-btn" title="Block User Profile"><i class="fa-solid fa-user-slash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management | Men's Wear Hub</title>
+    <link rel="stylesheet" href="stockrepo.css">
+    <!-- FontAwesome for Operational Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>MENS WEAR HUB</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="nav-links">
+              
+                <a href="/Adminstration/Dashboard/admin.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+
+                <a href="#" class="active"><i class="fa-solid fa-shirt"></i> Stock Management</a>
+                <a href="#"><i class="fa-solid fa-wallet"></i> Sales Management</a>
+                <a href="#"><i class="fa-solid fa-users"></i> Employee Management</a>
+                <a href="#"><i class="fa-solid fa-receipt"></i> Pending Bills</a>
+                <a href="#"><i class="fa-solid fa-gears"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Stock Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Action Header -->
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Inventory & Stock Control</h1>
+                    <p>Monitor garment availability, update item variants, and manage restock triggers.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary"><i class="fa-solid fa-download"></i> Export CSV</button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add New Product</button>
+                </div>
+            </header>
+
+            <!-- 1. Stock Status Inventory Summary (KPI Cards) -->
+            <section class="metrics-grid">
+                <!-- Total Items -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Total Apparel Stock</h3>
+                            <h2>4,850 Pcs</h2>
+                            <p class="summary-note">Across all sizes & styles</p>
+                        </div>
+                        <i class="fa-solid fa-boxes-stacked card-icon icon-blue"></i>
+                    </div>
+                </div>
+
+                <!-- Low Stock Alert -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Low Stock Warn</h3>
+                            <h2>14 Items</h2>
+                            <p class="trend down"><i class="fa-solid fa-triangle-exclamation"></i> Action required soon</p>
+                        </div>
+                        <i class="fa-solid fa-triangle-exclamation card-icon icon-orange"></i>
+                    </div>
+                </div>
+
+                <!-- Out of Stock -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Out of Stock</h3>
+                            <h2>03 Items</h2>
+                            <p class="trend danger"><i class="fa-solid fa-ban"></i> Hidden from storefront</p>
+                        </div>
+                        <i class="fa-solid fa-circle-xmark card-icon icon-red"></i>
+                    </div>
+                </div>
+
+                <!-- Supplier Deliveries -->
+                <div class="card">
+                    <div class="card-inner">
+                        <div>
+                            <h3>Inbound Shipment</h3>
+                            <h2>1,200 Pcs</h2>
+                            <p class="trend up"><i class="fa-solid fa-truck-moving"></i> Arriving in 2 days</p>
+                        </div>
+                        <i class="fa-solid fa-truck card-icon icon-green"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Inventory Filtering and Sorting Controls -->
+            <div class="filter-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search product name, SKU, or tag...">
+                </div>
+                <div class="select-group">
+                    <select id="filter-category">
+                        <option value="">All Categories</option>
+                        <option value="formals">Formal Shirts</option>
+                        <option value="casuals">Casual Jeans</option>
+                        <option value="streetwear">Streetwear Tees</option>
+                        <option value="ethnic">Ethnic Wear</option>
+                    </select>
+                    <select id="filter-status">
+                        <option value="">All Statuses</option>
+                        <option value="instock">In Stock</option>
+                        <option value="low">Low Stock</option>
+                        <option value="out">Out of Stock</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 3. Granular Detailed Stock Allocation Master Table -->
+            <div class="data-box">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>SKU Code</th>
+                            <th>Product Thumbnail & Name</th>
+                            <th>Category</th>
+                            <th>Size Breakdown (Qty)</th>
+                            <th>Total Units</th>
+                            <th>Status Badge</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Product Item 1 -->
+                        <tr>
+                            <td class="sku-text">MW-SH-BLK-01</td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="img-placeholder"><i class="fa-solid fa-shirt"></i></div>
+                                    <div>
+                                        <strong>Slim-fit Premium Black Shirt</strong>
+                                        <span>Material: 100% Cotton Giza</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Formal Wear</td>
+                            <td>
+                                <div class="size-chips">
+                                    <span><strong>S:</strong> 120</span>
+                                    <span><strong>M:</strong> 150</span>
+                                    <span><strong>L:</strong> 100</span>
+                                    <span><strong>XL:</strong> 80</span>
+                                </div>
+                            </td>
+                            <td><strong>450 Pcs</strong></td>
+                            <td><span class="badge success-badge">In Stock</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn edit-btn" title="Quick Update Quantity"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn history-btn" title="View Stock Movement Logs"><i class="fa-solid fa-history"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Product Item 2 -->
+                        <tr>
+                            <td class="sku-text">MW-JN-BLU-04</td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="img-placeholder"><i class="fa-solid fa-shirt"></i></div>
+                                    <div>
+                                        <strong>Regular Fit Raw Denim Jeans</strong>
+                                        <span>Color: Indigo Wash</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Casual Wear</td>
+                            <td>
+                                <div class="size-chips">
+                                    <span><strong>30:</strong> 5</span>
+                                    <span><strong>32:</strong> 12</span>
+                                    <span><strong>34:</strong> 7</span>
+                                    <span><strong>36:</strong> 0</span>
+                                </div>
+                            </td>
+                            <td><strong>24 Pcs</strong></td>
+                            <td><span class="badge warning-badge">Low Stock</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn edit-btn" title="Quick Update Quantity"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn history-btn" title="View Stock Movement Logs"><i class="fa-solid fa-history"></i></button>
+                            </td>
+                        </tr>
+
+                                               <!-- Product Item 3 -->
+                        <tr>
+                            <td class="sku-text">MW-TS-GRP-12</td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="img-placeholder"><i class="fa-solid fa-shirt"></i></div>
+                                    <div>
+                                        <strong>Oversized Graphic Heavyweight Tee</strong>
+                                        <span>Collection: Winter Streetwear</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Streetwear</td>
+                            <td>
+                                <div class="size-chips">
+                                    <span><strong>S:</strong> 0</span>
+                                    <span><span><strong>M:</strong> 2</span></span>
+                                    <span><span><strong>L:</strong> 3</span></span>
+                                    <span><strong>XL:</strong> 0</span>
+                                </div>
+                            </td>
+                            <td><strong>5 Pcs</strong></td>
+                            <td><span class="badge critical-badge">Critical Low</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn edit-btn" title="Quick Update Quantity"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn history-btn" title="View Stock Movement Logs"><i class="fa-solid fa-history"></i></button>
+                            </td>
+                        </tr> <!-- Fixed: Closed row 3 properly here -->
+
+                        <!-- Product Item 4 -->
+                        <tr>
+                            <td class="sku-text">MW-SU-NAV-09</td>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="img-placeholder"><i class="fa-solid fa-shirt"></i></div>
+                                    <div>
+                                        <strong>Classic Navy Blue Tuxedo Suit</strong>
+                                        <span>Includes: Blazer & Trousers</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Premium Suits</td>
+                            <td>
+                                <div class="size-chips">
+                                    <span><strong>38:</strong> 0</span>
+                                    <span><strong>40:</strong> 0</span>
+                                    <span><strong>42:</strong> 0</span>
+                                    <span><strong>44:</strong> 0</span>
+                                </div>
+                            </td>
+                            <td><strong>0 Pcs</strong></td>
+                            <td><span class="badge danger-badge">Out of Stock</span></td>
+                            <td class="action-buttons">
+                                <button class="action-btn edit-btn" title="Quick Update Quantity"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn history-btn" title="View Stock Movement Logs"><i class="fa-solid fa-history"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+</body>
+</html>
