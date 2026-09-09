@@ -47,17 +47,21 @@ public class LoginService {
     }
 
     if (user.isEmpty()) {
-        return new LoginResponse("User not found", null);
+       return new LoginResponse("User not found", null, null);
+
     }
 
     if (!user.get().getPassword().equals(password)) {
-        return new LoginResponse("Invalid password", null);
+        return new LoginResponse("Invalid password", null, null);
+
     }
 
     return new LoginResponse(
-        "Login successful",
-        user.get().getName()
-    );
+    "Login successful",
+    user.get().getName(),
+    user.get().getId()
+);
+
 }
 
 }

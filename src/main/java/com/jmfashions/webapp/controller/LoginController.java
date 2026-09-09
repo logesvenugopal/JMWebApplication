@@ -11,8 +11,7 @@ import com.jmfashions.webapp.DTO.LoginResponse;
 import com.jmfashions.webapp.entity.LoginEntity;
 import com.jmfashions.webapp.service.LoginService;
 
-
-
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api")
@@ -25,7 +24,7 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-     @GetMapping("/")
+    @GetMapping("/")
     public String home() {
         return "redirect:/Application.html";
     }
@@ -33,22 +32,29 @@ public class LoginController {
     // REGISTER
     @PostMapping("/register")
     public String register(@RequestBody LoginEntity user) {
-
         return loginService.registerUser(user);
     }
 
     // LOGIN
-   @PostMapping("/login")
-public LoginResponse login(@RequestBody LoginRequest request) {
+    @PostMapping("/login")
+    public LoginResponse login(
+            @RequestBody LoginRequest request,
+            HttpSession session) {
 
-    return loginService.loginUser(
-        request.getEmailOrMobile(),
-        request.getPassword()
-    );
-}
+        LoginResponse response = loginService.loginUser(
+                request.getEmailOrMobile(),
+                request.getPassword()
+        );
 
+        if ("Login successful".equals(response.getMessage())) {
 
-    // Login request class
+            session.setAttribute("userId", response.getId());
+            session.setAttribute("userName", response.getName());
+        }
+
+        return response;
+    }
+
     public static class LoginRequest {
 
         private String emailOrMobile;

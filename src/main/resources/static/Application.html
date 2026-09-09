@@ -666,103 +666,188 @@
 
 </body>
 
+
 <script>
 
-    const userName = localStorage.getItem("userName");
+// =====================================================
+// LOGIN / LOGOUT
+// =====================================================
 
-    const loginLink = document.getElementById("loginLink");
-    const welcomeUser = document.getElementById("welcomeUser");
+const loginLink = document.getElementById("loginLink");
+const welcomeUser = document.getElementById("welcomeUser");
 
-    if (userName) {
+const userName = localStorage.getItem("userName");
+const userId = localStorage.getItem("userId");
 
-        // Change Login to Logout
-        loginLink.textContent = "Logout";
-        loginLink.href = "#";
+if (userId && userName) {
 
-        // Show user's name
-        welcomeUser.textContent = "Welcome, " + userName;
+    // User is logged in
+    loginLink.textContent = "Logout";
+    loginLink.href = "#";
 
-        // Logout action
-        loginLink.addEventListener("click", function (event) {
+    welcomeUser.textContent = "Welcome, " + userName;
 
-            event.preventDefault();
-
-            // Remove login information
-            localStorage.removeItem("userName");
-
-            // Go back to Home page
-            window.location.href = "Application.html";
-        });
-
-    } else {
-
-        // User is not logged in
-        loginLink.textContent = "Login";
-        loginLink.href = "login.html";
-
-        welcomeUser.textContent = "Welcome";
-
-    }
-
-
-
-    // FEEDBACK CODE
-    document.getElementById("feedbackForm").addEventListener("submit", async function(event) {
+    // Logout
+    loginLink.addEventListener("click", function(event) {
 
         event.preventDefault();
 
-        const userName = localStorage.getItem("userName");
+        // Remove ALL login information
+        localStorage.removeItem("userId");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("isLoggedIn");
 
-        if (!userName) {
-            alert("Please login before submitting feedback.");
-            window.location.href = "login.html";
-            return;
-        }
-
-        const feedbackData = {
-            name: document.getElementById("feedbackName").value,
-            mail: document.getElementById("feedbackMail").value,
-            phone: document.getElementById("feedbackPhone").value,
-            comments: document.getElementById("feedbackComments").value
-        };
-
-        try {
-
-            const response = await fetch("/api/feedback", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(feedbackData)
-            });
-
-            if (response.ok) {
-
-                alert("Feedback submitted successfully!");
-                document.getElementById("feedbackForm").reset();
-
-            } else {
-
-                alert("Failed to submit feedback.");
-
-            }
-
-        } catch (error) {
-
-            console.error(error);
-            alert("Something went wrong. Please try again.");
-
-        }
-
+        // Go to home
+        window.location.href = "Application.html";
     });
 
-   
+} else {
+
+    // User is NOT logged in
+    loginLink.textContent = "Login";
+    loginLink.href = "login.html";
+
+    welcomeUser.textContent = "Welcome";
+}
+
+
+// =====================================================
+// LOGIN CHECK FUNCTION
+// =====================================================
+
+function isUserLoggedIn() {
+
+    const userId = localStorage.getItem("userId");
+
+    return userId !== null && userId !== "";
+}
+
+
+function requireLogin() {
+
+    if (!isUserLoggedIn()) {
+
+        alert("Please login first!");
+
+        window.location.href = "login.html";
+
+        return false;
+    }
+
+    return true;
+}
+
+
+// =====================================================
+// FEEDBACK
+// =====================================================
+
+const feedbackForm =
+    document.getElementById("feedbackForm");
+
+if (feedbackForm) {
+
+    feedbackForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+            // LOGIN CHECK
+            if (!requireLogin()) {
+                return;
+            }
+
+            const feedbackData = {
+
+                name:
+                    document.getElementById(
+                        "feedbackName"
+                    ).value,
+
+                mail:
+                    document.getElementById(
+                        "feedbackMail"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "feedbackPhone"
+                    ).value,
+
+                comments:
+                    document.getElementById(
+                        "feedbackComments"
+                    ).value
+            };
+
+
+            try {
+
+                const response = await fetch(
+                    "/api/feedback",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                feedbackData
+                            )
+                    }
+                );
+
+
+                if (response.ok) {
+
+                    alert(
+                        "Feedback submitted successfully!"
+                    );
+
+                    feedbackForm.reset();
+
+                } else {
+
+                    alert(
+                        "Failed to submit feedback."
+                    );
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Feedback error:",
+                    error
+                );
+
+                alert(
+                    "Something went wrong. Please try again."
+                );
+            }
+
+        }
+    );
+}
+
+
+// =====================================================
+// CART
+// =====================================================
 
 let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
 
 
-// CART ICON
+// =====================================================
+// CART ELEMENTS
+// =====================================================
 
 const cartIcon =
     document.getElementById("cartIcon");
@@ -774,45 +859,70 @@ const closeCart =
     document.getElementById("closeCart");
 
 
+// =====================================================
 // OPEN CART
+// =====================================================
 
-cartIcon.addEventListener("click", function () {
+if (cartIcon) {
 
-    updateApplicationCart();
+    cartIcon.addEventListener(
+        "click",
+        function() {
 
-    cartModal.style.display = "flex";
+            updateApplicationCart();
 
-});
+            cartModal.style.display = "flex";
+        }
+    );
+}
 
 
+// =====================================================
 // CLOSE CART
+// =====================================================
 
-closeCart.addEventListener("click", function () {
+if (closeCart) {
 
-    cartModal.style.display = "none";
+    closeCart.addEventListener(
+        "click",
+        function() {
 
-});
-
-
-// CLOSE WHEN OUTSIDE CLICK
-
-cartModal.addEventListener("click", function (event) {
-
-    if (event.target === cartModal) {
-
-        cartModal.style.display = "none";
-
-    }
-
-});
+            cartModal.style.display = "none";
+        }
+    );
+}
 
 
-// DISPLAY ALL CART PRODUCTS
+// =====================================================
+// CLOSE CART OUTSIDE
+// =====================================================
+
+if (cartModal) {
+
+    cartModal.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === cartModal) {
+
+                cartModal.style.display = "none";
+            }
+        }
+    );
+}
+
+
+// =====================================================
+// DISPLAY CART
+// =====================================================
 
 function updateApplicationCart() {
 
     cart =
-        JSON.parse(localStorage.getItem("cart")) || [];
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
+
 
     const cartItems =
         document.getElementById("cartItems");
@@ -826,19 +936,22 @@ function updateApplicationCart() {
     let total = 0;
 
 
+    // EMPTY CART
     if (cart.length === 0) {
 
         cartItems.innerHTML =
-            '<div class="empty-cart">Your cart is empty 🛒</div>';
+            '<div class="empty-cart">' +
+            'Your cart is empty 🛒' +
+            '</div>';
 
         cartTotal.textContent = "₹0";
 
         return;
-
     }
 
 
-    cart.forEach(function (item, index) {
+    // CART ITEMS
+    cart.forEach(function(item, index) {
 
         const subtotal =
             item.price * item.quantity;
@@ -862,7 +975,9 @@ function updateApplicationCart() {
 
             <div class="cart-item-info">
 
-                <h3>${item.name}</h3>
+                <h3>
+                    ${item.name}
+                </h3>
 
                 <div class="cart-item-price">
                     ₹${item.price}
@@ -884,12 +999,10 @@ function updateApplicationCart() {
 
             <button
                 class="remove-cart"
-                onclick="removeApplicationCart(${index})">
-
+                onclick="removeApplicationCart(${index})"
+            >
                 Remove
-
             </button>
-
         `;
 
 
@@ -900,11 +1013,12 @@ function updateApplicationCart() {
 
     cartTotal.textContent =
         "₹" + total;
-
 }
 
 
-// REMOVE PRODUCT
+// =====================================================
+// REMOVE CART ITEM
+// =====================================================
 
 function removeApplicationCart(index) {
 
@@ -916,57 +1030,139 @@ function removeApplicationCart(index) {
     );
 
     updateApplicationCart();
-
 }
 
+
+// =====================================================
+// CHECKOUT
+// =====================================================
+
 const checkoutBtn =
-    document.getElementById("checkoutCartBtn");
+    document.getElementById(
+        "checkoutCartBtn"
+    );
 
 const paymentModal =
-    document.getElementById("paymentModal");
+    document.getElementById(
+        "paymentModal"
+    );
 
 const closePayment =
-    document.getElementById("closePayment");
+    document.getElementById(
+        "closePayment"
+    );
 
 
-checkoutBtn.addEventListener("click", function () {
+if (checkoutBtn) {
 
-    cart =
-        JSON.parse(localStorage.getItem("cart")) || [];
+    checkoutBtn.addEventListener(
+        "click",
+        function() {
 
-    if (cart.length === 0) {
+            // ==========================================
+            // LOGIN CHECK
+            // ==========================================
 
-        alert("Your cart is empty.");
+            if (!requireLogin()) {
 
-        return;
-
-    }
-
-
-    let total = 0;
-
-    cart.forEach(function (item) {
-
-        total += item.price * item.quantity;
-
-    });
+                return;
+            }
 
 
-    document.getElementById("paymentTotal")
-        .textContent = "₹" + total;
+            // ==========================================
+            // GET CART
+            // ==========================================
+
+            cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
 
 
-    document.getElementById("cartModal")
-        .style.display = "none";
+            // ==========================================
+            // EMPTY CART CHECK
+            // ==========================================
+
+            if (cart.length === 0) {
+
+                alert(
+                    "Your cart is empty."
+                );
+
+                return;
+            }
 
 
-    paymentModal.style.display = "flex";
+            // ==========================================
+            // CALCULATE TOTAL
+            // ==========================================
 
-});
+            let total = 0;
 
 
+            cart.forEach(function(item) {
+
+                total +=
+                    item.price *
+                    item.quantity;
+            });
+
+
+            // ==========================================
+            // SHOW TOTAL
+            // ==========================================
+
+            document.getElementById(
+                "paymentTotal"
+            ).textContent =
+                "₹" + total;
+
+
+            // ==========================================
+            // CLOSE CART
+            // ==========================================
+
+            document.getElementById(
+                "cartModal"
+            ).style.display = "none";
+
+
+            // ==========================================
+            // OPEN PAYMENT
+            // ==========================================
+
+            paymentModal.style.display = "flex";
+
+        }
+    );
+}
+
+
+// =====================================================
+// CLOSE PAYMENT
+// =====================================================
+
+if (closePayment) {
+
+    closePayment.addEventListener(
+        "click",
+        function() {
+
+            paymentModal.style.display =
+                "none";
+        }
+    );
+}
+
+
+// =====================================================
+// INITIAL CART LOAD
+// =====================================================
+
+updateApplicationCart();
 
 </script>
+
 
 
 

@@ -202,22 +202,36 @@
 
     </footer>
 
-    <script>
-
-document.getElementById("loginForm").addEventListener("submit", async function(event) {
-
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const emailOrMobile = document.getElementById("emailOrMobile").value;
-    const password = document.getElementById("password").value;
+    const emailOrMobile =
+        document.getElementById("emailOrMobile").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    // Empty field validation
+    if (emailOrMobile === "") {
+        alert("Please enter your email or mobile number.");
+        return;
+    }
+
+    if (password === "") {
+        alert("Please enter your password.");
+        return;
+    }
 
     try {
 
-        const response = await fetch("/api/login", {
+        const response = await fetch("http://localhost:8080/api/login", {
             method: "POST",
+
             headers: {
                 "Content-Type": "application/json"
             },
+
             body: JSON.stringify({
                 emailOrMobile: emailOrMobile,
                 password: password
@@ -226,30 +240,39 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
         const data = await response.json();
 
-        if (response.ok && data.message === "Login successful") {
+        console.log("Login response:", data);
 
-            // Save user's full name
+        if (response.ok) {
+
+            // Save login details
+            localStorage.setItem("userId", data.id);
             localStorage.setItem("userName", data.name);
+            localStorage.setItem("isLoggedIn", "true");
+
+            alert("Login successful! 🎉");
 
             // Go to home page
             window.location.href = "Application.html";
 
         } else {
 
-            alert(data.message);
+            alert(data.message || "Invalid email/mobile or password.");
 
         }
 
     } catch (error) {
 
         console.error("Login error:", error);
-        alert("Something went wrong. Please try again.");
 
+        alert(
+            "Cannot connect to server.\n" +
+            "Please make sure Spring Boot is running."
+        );
     }
-
 });
-
 </script>
+
+
 
 
 </body>
