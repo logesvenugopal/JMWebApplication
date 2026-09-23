@@ -47,12 +47,12 @@ public class FeedbackEntity {
         this.mail = mail;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public String getComments() {

@@ -16,10 +16,10 @@ li:hover{
 }
 
 .logo1 img{
-    width: 250px;
-    height: 250px;
-   border-radius: 140px;
-    padding-top: 10px;
+    width: 150px;
+    height: 150px;
+   border-radius: 120px;
+    padding-top: 5px;
     padding-left: 20px;;
 
     
@@ -96,7 +96,7 @@ body{
 .logo img{
     width: 150px;
     height: 150px;
-    padding-top: 60px;;
+    padding-top: 40px;;
     }
 
 .search-box{
@@ -1002,4 +1002,42 @@ body{
 
     cursor: pointer;
 
+}
+
+
+.recent-feedback-section {
+    margin-top: 25px;
+}
+
+.recent-feedback-section h2 {
+    margin-bottom: 15px;
+}
+
+#recentFeedbacks {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.feedback-card {
+    width: 180px;
+    min-height: 100px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-card h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+}
+
+.feedback-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #666;
 }

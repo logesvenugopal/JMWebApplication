@@ -429,12 +429,27 @@
                 of customer feedback to refine our apparel fits, enhance platform performance, and deliver a <br>
                 premium shopping experience. Share your thoughts, suggestions, or issues with us, and our <br>
                 administration team will review them promptly.</p>
+
+                <div class="recent-feedback-section">
+
+    <h2>Customer Feedback</h2>
+
+    <div id="recentFeedbacks">
+        <!-- Latest 3 feedbacks will be loaded here -->
+    </div>
+
+</div>
+
+
             
             <div class="support-badge">
                 <i class="fa-solid fa-shield-halved"></i>
                 <span>Direct Admin Escalation Gate</span>
             </div>
         </div>
+
+
+        
 
     <form class="form2" id="feedbackForm">
 
@@ -464,6 +479,10 @@
 
 
         </div>
+        
+
+
+
     </form>
 
 </section>
@@ -834,6 +853,45 @@ if (feedbackForm) {
     );
 }
 
+
+
+const recentFeedbacks = document.getElementById("recentFeedbacks");
+
+function loadRecentFeedbacks() {
+
+    fetch("http://localhost:8080/api/feedback/recent")
+        .then(response => response.json())
+        .then(feedbacks => {
+
+            recentFeedbacks.innerHTML = "";
+
+            if (feedbacks.length === 0) {
+                recentFeedbacks.innerHTML =
+                    "<p>No feedback available yet.</p>";
+                return;
+            }
+
+            feedbacks.forEach(feedback => {
+
+                const feedbackCard = document.createElement("div");
+
+                feedbackCard.classList.add("feedback-card");
+
+                feedbackCard.innerHTML = `
+                    <h3>${feedback.name}</h3>
+                    <p>${feedback.comments}</p>
+                `;
+
+                recentFeedbacks.appendChild(feedbackCard);
+            });
+        })
+        .catch(error => {
+            console.error("Error loading feedbacks:", error);
+        });
+}
+
+// Load feedbacks when page opens
+loadRecentFeedbacks();
 
 // =====================================================
 // CART
